@@ -5,7 +5,7 @@ function Round(winnerLambda, matches) {
 
 Round.prototype = {
 
-    getWinners: function () {
+    get winners() {
         return this.matches.map(this.winnerLambda);
     }
     

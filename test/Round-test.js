@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var Round = require('../src/Round');
 
 describe("Round", function () {
-    describe("#getWinners()", function () {
+    describe("#winners", function () {
         it('should behave exactly as map', function () {
             // arrange
             var match = {
@@ -13,7 +13,7 @@ describe("Round", function () {
             var round = new Round(winnerLambda, matches);
 
             // act
-            var result = round.getWinners();
+            var result = round.winners;
             var expectedResult = matches.map(winnerLambda);
 
             // assert
