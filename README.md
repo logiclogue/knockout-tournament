@@ -6,23 +6,26 @@ classes.
 ## Functions
 
 ```
-(Match -> Team) -> (Match -> Team) -> [Matches] -> Round
+Match a => (a -> Team) -> (a -> Team) -> [a] -> Round
 Round
 
-Round ~> [Teams]
+Round ~> [Team]
 Round.winners
 
-Round ~> [Teams]
+Round ~> [Team]
 Round.losers
 
-Round ~> [Teams]
+Round ~> [Team]
 Round.teams
 
-Round ~> [Teams]
+Round ~> [Team]
 Round.matches
 
-[Teams] -> [Matches]
+[Team] -> [(Team, Team)]
 schedule
+
+Match a => ((Team, Team) -> Number -> Number -> a) -> (Team, Team) -> a
+convertToMatch
 ```
 
 ## License
