@@ -21,8 +21,8 @@ Round.teams
 Round ~> [Team]
 Round.matches
 
-[Team] -> [(Team, Team)]
-schedule
+Team a => (a -> a -> Number) -> [a] -> [(a, a)]
+sortSchedule
 
 Match a => ((Team, Team) -> Number -> Number -> a) -> (Team, Team) -> a
 convertToMatch
