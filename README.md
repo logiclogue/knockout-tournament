@@ -24,6 +24,9 @@ Round.matches
 Team a => (a -> a -> Number) -> [a] -> [(a, a)]
 sortSchedule
 
+Team a => (a -> a -> Number) -> [a] -> [(a, a)]
+seedSchedule
+
 Match a => ((Team, Team) -> Number -> Number -> a) -> (Team, Team) -> a
 convertToMatch
 ```
