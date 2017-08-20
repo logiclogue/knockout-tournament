@@ -52,9 +52,9 @@ describe('seedSchedule', function () {
     });
 
     context('5 teams passed in', function () {
-        it('should discard the last team', function () {
+        it('should discard the lowest ranked side', function () {
             // arrange
-            var teams = [1, 3, 8, 4, 9];
+            var teams = [1, 3, 8, 9, 4];
 
             // act
             var result = seedSchedule(compareFunction, teams);
