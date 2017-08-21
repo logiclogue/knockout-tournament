@@ -6,7 +6,7 @@ classes.
 ## Functions
 
 ```
-Match a => (a -> Team) -> (a -> Team) -> [a] -> Round
+(Match -> Team) -> (Match -> Team) -> [Match] -> Round
 Round
 
 Round ~> [Team]
@@ -21,13 +21,13 @@ Round.teams
 Round ~> [Team]
 Round.matches
 
-Team a => (a -> a -> Number) -> [a] -> [(a, a)]
+(Team -> Team -> Number) -> [Team] -> [(Team, Team)]
 sortSchedule
 
-Team a => (a -> a -> Number) -> [a] -> [(a, a)]
+(Team -> Team -> Number) -> [Team] -> [(Team, Team)]
 seedSchedule
 
-Match a => ((Team, Team) -> Number -> Number -> a) -> (Team, Team) -> a
+((Team, Team) -> Number -> Number -> Match) -> (Team, Team) -> Match
 convertToMatch
 ```
 
