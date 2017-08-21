@@ -6,7 +6,7 @@ classes.
 ## Functions
 
 ```
-(Match -> Team) -> (Match -> Team) -> [Match] -> Round
+(Match -> Team) -> (Match -> Team) -> [Match] -> [Team] -> Round
 Round
 
 Round ~> [Team]
@@ -17,6 +17,9 @@ Round.losers
 
 Round ~> [Team]
 Round.teams
+
+Round ~> [Team]
+Round.byes
 
 Round ~> [Team]
 Round.matches

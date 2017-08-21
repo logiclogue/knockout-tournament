@@ -1,7 +1,8 @@
-function Round(winnerLambda, loserLambda, matches) {
+function Round(winnerLambda, loserLambda, matches, byedTeams) {
     this.winnerLambda = winnerLambda;
     this.loserLambda = loserLambda;
     this.matches = matches;
+    this.byedTeams = byedTeams;
 }
 
 Round.prototype = {
@@ -15,6 +16,10 @@ Round.prototype = {
     },
 
     get teams() {
+        return this.competingTeams.concat(this.byedTeams);
+    },
+    
+    get competingTeams() {
         return this.winners.concat(this.losers);
     }
     
