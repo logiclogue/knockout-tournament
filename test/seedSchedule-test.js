@@ -51,8 +51,8 @@ describe('seedSchedule', function () {
         });
     });
 
-    context('5 teams passed in', function () {
-        it('should discard the lowest ranked side', function () {
+    context('odd number of teams passed in', function () {
+        it('should discard the lowest ranked team', function () {
             // arrange
             var teams = [1, 3, 8, 9, 4];
 
@@ -61,6 +61,19 @@ describe('seedSchedule', function () {
 
             // assert
             expect(result).to.deep.equal([[1, 8], [3, 4]]);
+        });
+    });
+
+    context('8 teams passed in', function () {
+        it('should arrange them appropriately', function () {
+            // arrange
+            var teams = [1, 2, 3, 4, 5, 6, 7, 8];
+
+            // act
+            var result = seedSchedule(compareFunction, teams);
+
+            // assert
+            expect(result).to.deep.equal([[1, 8], [4, 5], [2, 7], [3, 6]])
         });
     });
 });

@@ -16,7 +16,7 @@ function seedSchedule(compareFunction, teams) {
 }
 
 function seeding(numPlayers) {
-    var rounds = Math.ceil(Math.log(numPlayers) / Math.log(2) - 1);
+    var rounds = Math.floor(Math.log(numPlayers) / Math.log(2) - 1);
     var teams = [1, 2];
     var i;
 
