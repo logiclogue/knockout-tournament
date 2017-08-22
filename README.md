@@ -24,14 +24,20 @@ Round.byes
 Round ~> [Team]
 Round.matches
 
+(Team -> Team -> Number) -> Schedule
+SortSchedule
+
+(Team -> Team -> Number) -> Schedule
+SeedSchedule
+
+Schedule ~> [Team] -> [(Team, Team)]
+Schedule.schedule
+
 (Team -> Team -> Number) -> [Team] -> [(Team, Team)]
 sortSchedule
 
 (Team -> Team -> Number) -> [Team] -> [(Team, Team)]
 seedSchedule
-
-((Team, Team) -> Number -> Number -> Match) -> (Team, Team) -> Match
-convertToMatch
 ```
 
 ## License
