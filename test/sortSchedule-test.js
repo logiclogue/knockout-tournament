@@ -27,7 +27,7 @@ describe('sortSchedule()', function () {
     });
 
     context('odd number of teams', function () {
-        it('should discard the last team', function () {
+        it('should discard the lowest ranked team', function () {
             // arrange
             var numbers = [8, 6, 7, 4, 3, 0, 2];
             var expected = [[0, 2], [3, 4], [6, 7]];
