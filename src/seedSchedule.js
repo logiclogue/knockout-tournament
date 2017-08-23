@@ -39,4 +39,4 @@ function nextLayer(teams) {
     return out;
 }
 
-module.exports = seedSchedule;
+module.exports = _.curry(seedSchedule);

@@ -24,4 +24,4 @@ function pairTeams(sortedTeams) {
     return filteredTeams;
 }
 
-module.exports = sortSchedule;
+module.exports = _.curry(sortSchedule);
