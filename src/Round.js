@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 function Round(winnerLambda, loserLambda, matches, byedTeams) {
     this.winnerLambda = winnerLambda;
     this.loserLambda = loserLambda;
@@ -25,4 +27,4 @@ Round.prototype = {
     
 };
 
-module.exports = Round;
+module.exports = _.curry(Round);
