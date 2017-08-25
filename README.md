@@ -29,6 +29,15 @@ sortSchedule
 
 (Team -> Team -> Number) -> [Team] -> [(Team, Team)]
 seedSchedule
+
+//Scheduler ~> [Team] -> [(Team, Team)]
+//Scheduler.schedule
+
+//(Match -> Team) -> (Match -> Team) -> Scheduler -> [Team] -> Tournament
+//Tournament
+
+//Tournament ~> Round
+//Tournament.getNextRound
 ```
 
 ## License
