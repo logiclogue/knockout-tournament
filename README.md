@@ -33,11 +33,12 @@ seedSchedule
 //Scheduler ~> [Team] -> [(Team, Team)]
 //Scheduler.schedule
 
-//(Match -> Team) -> (Match -> Team) -> Scheduler -> [Team] -> Tournament
-//Tournament
+(Match -> Team) -> (Match -> Team) -> (Team -> Team -> Number -> Number ->
+Match) -> Scheduler -> [Team] -> Tournament
+Tournament
 
-//Tournament ~> Round
-//Tournament.getNextRound
+//Tournament ~> Number -> Round
+//Tournament.getRound
 ```
 
 ## License

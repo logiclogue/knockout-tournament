@@ -1,16 +1,9 @@
 var expect = require('chai').expect;
 var sortSchedule = require('../src/sortSchedule');
+var stubs = require('./stubs');
 
 describe('sortSchedule()', function () {
-    function compareFunction(teamA, teamB) {
-        if (teamA > teamB) {
-            return 1;
-        } else if (teamA < teamB) {
-            return -1;
-        }
-
-        return 0;
-    }
+    var compareFunction = stubs.compareFunction;
 
     context('numbers and sort on size', function () {
         it('should sort and pair them on size', function () {

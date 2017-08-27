@@ -1,16 +1,9 @@
 var expect = require('chai').expect;
 var seedSchedule = require('../src/seedSchedule');
+var stubs = require('./stubs');
 
 describe('seedSchedule', function () {
-    function compareFunction(teamA, teamB) {
-        if (teamA > teamB) {
-            return 1;
-        } else if (teamA < teamB) {
-            return -1;
-        }
-
-        return 0;
-    }
+    var compareFunction = stubs.compareFunction;
 
     context('1 team passed in', function () {
         it('should return an empty array', function () {

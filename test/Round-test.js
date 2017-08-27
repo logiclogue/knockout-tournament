@@ -1,21 +1,13 @@
 var expect = require('chai').expect;
 var Round = require('../src/Round');
+var stubs = require('./stubs');
 
 describe("Round", function () {
-    function Match(winner, loser) {
-        this.winner = winner;
-        this.loser = loser;
-    }
-
-    var matches = [
-        new Match("Derby", "Preston"),
-        new Match("Man Utd", "West Ham")
-    ];
-
-    var byedTeams = ["Newport County"];
-    
-    var getWinner = match => match.winner;
-    var getLoser = match => match.loser;
+    var Match = stubs.Match;
+    var matches = stubs.matches;
+    var getWinner = stubs.getWinner;
+    var getLoser = stubs.getLoser;
+    var byedTeams = stubs.byedTeams;
 
     var round = new Round(getWinner, getLoser, matches, byedTeams);
 
