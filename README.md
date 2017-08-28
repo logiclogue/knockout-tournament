@@ -30,8 +30,8 @@ sortSchedule
 (Team -> Team -> Number) -> [Team] -> [(Team, Team)]
 seedSchedule
 
-//(Team -> Team -> Number) -> Scheduler
-//SortScheduler
+(Team -> Team -> Number) -> Scheduler
+SortScheduler
 
 //(Team -> Team -> Number) -> Scheduler
 //SeedScheduler
