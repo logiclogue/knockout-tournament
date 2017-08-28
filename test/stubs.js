@@ -13,6 +13,7 @@ var matches = [
 var byedTeams = ["Newport County"];
 var getWinner = match => match.winner;
 var getLoser = match => match.loser;
+var createMatch = (homeTeam, awayTeam) => new Match(homeTeam, awayTeam);
 
 function compareFunction(teamA, teamB) {
     if (teamA > teamB) {
@@ -30,7 +31,8 @@ var stubs = {
     getWinner: getWinner,
     getLoser: getLoser,
     Match: Match,
-    compareFunction: compareFunction
+    compareFunction: compareFunction,
+    createMatch: createMatch
 };
 
 module.exports = stubs;
