@@ -1,0 +1,72 @@
+var expect = require('chai').expect;
+var SeedScheduler = require('../src/SeedScheduler');
+var stubs = require('./stubs');
+
+describe('SeedScheduler', function () {
+    var scheduler = new SeedScheduler(stubs.compareFunction);
+
+    context('1 team passed in', function () {
+        it('should return an empty array', function () {
+            // arrange
+            var teams = [1];
+
+            // act
+            var result = scheduler.schedule(teams);
+
+            // assert
+            expect(result).to.deep.equal([]);
+        });
+    });
+
+    context('2 teams passed in', function () {
+        it('should return an array of 1 pair', function () {
+            // arrange
+            var teams = [4, 1];
+
+            // act
+            var result = scheduler.schedule(teams);
+
+            // assert
+            expect(result).to.deep.equal([[1, 4]]);
+        });
+    });
+
+    context('4 teams passed in', function () {
+        it('should arrange them appropriately', function () {
+            // arrange
+            var teams = [1, 3, 8, 4];
+
+            // act
+            var result = scheduler.schedule(teams);
+
+            // assert
+            expect(result).to.deep.equal([[1, 8], [3, 4]]);
+        });
+    });
+
+    context('odd number of teams passed in', function () {
+        it('should discard the lowest ranked team', function () {
+            // arrange
+            var teams = [1, 3, 8, 9, 4];
+
+            // act
+            var result = scheduler.schedule(teams);
+
+            // assert
+            expect(result).to.deep.equal([[1, 8], [3, 4]]);
+        });
+    });
+
+    context('8 teams passed in', function () {
+        it('should arrange them appropriately', function () {
+            // arrange
+            var teams = [1, 2, 3, 4, 5, 6, 7, 8];
+
+            // act
+            var result = scheduler.schedule(teams);
+
+            // assert
+            expect(result).to.deep.equal([[1, 8], [4, 5], [2, 7], [3, 6]])
+        });
+    });
+});
