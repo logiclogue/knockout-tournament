@@ -33,11 +33,11 @@ seedSchedule
 (Team -> Team -> Number) -> Scheduler
 SortScheduler
 
-//(Team -> Team -> Number) -> Scheduler
-//SeedScheduler
+(Team -> Team -> Number) -> Scheduler
+SeedScheduler
 
-//Scheduler ~> [Team] -> [(Team, Team)]
-//Scheduler.schedule
+Scheduler ~> [Team] -> [(Team, Team)]
+Scheduler.schedule
 
 (Match -> Team) -> (Match -> Team) -> (Team -> Team -> Number -> Number ->
 Match) -> Scheduler -> [Team] -> Tournament
