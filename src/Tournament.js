@@ -8,4 +8,13 @@ function Tournament(winnerLambda, loserLambda, createMatch, scheduler, teams) {
     this.teams = teams;
 }
 
+Tournament.prototype = {
+
+    // Tournament ~> Number -> Round
+    getRound: function (roundNumber) {
+        
+    }
+    
+}
+
 module.exports = Tournament;
