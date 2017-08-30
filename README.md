@@ -30,6 +30,9 @@ sortSchedule
 (Team -> Team -> Number) -> [Team] -> [(Team, Team)]
 seedSchedule
 
+Number -> Number
+numberOfRounds
+
 (Team -> Team -> Number) -> Scheduler
 SortScheduler
 
