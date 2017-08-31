@@ -33,6 +33,9 @@ seedSchedule
 Number -> Number
 numberOfRounds
 
+Number -> Number
+numberOfPreliminaryTeams
+
 (Team -> Team -> Number) -> Scheduler
 SortScheduler
 
