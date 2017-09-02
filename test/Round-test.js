@@ -12,7 +12,7 @@ describe("Round", function () {
     var round = new Round(getWinner, getLoser, matches, byedTeams);
 
     describe("#winners", function () {
-        it('should return all the winners', function () {
+        it('returns all the winners', function () {
             // arrange
             var expected = ["Derby", "Man Utd"];
 
@@ -25,7 +25,7 @@ describe("Round", function () {
     });
 
     describe('#losers', function () {
-        it('should return all the losers', function () {
+        it('returns all the losers', function () {
             // arrange
             var expected = ["Preston", "West Ham"];
 
@@ -38,7 +38,7 @@ describe("Round", function () {
     });
 
     describe('#teams', function () {
-        it('should return competing and byed teams', function () {
+        it('returns competing and byed teams', function () {
             // arrange
             var expected = ["Derby", "Man Utd", "Preston", "West Ham", "Newport County"];
 
@@ -51,7 +51,7 @@ describe("Round", function () {
     });
 
     describe('#competingTeams', function () {
-        it('should return competing teams', function () {
+        it('returns competing teams', function () {
             // arrange
             var expected = ["Derby", "Man Utd", "Preston", "West Ham"];
 

@@ -6,7 +6,7 @@ describe('seedSchedule', function () {
     var compareFunction = stubs.compareFunction;
 
     context('1 team passed in', function () {
-        it('should return an empty array', function () {
+        it('returns an empty array', function () {
             // arrange
             var teams = [1];
 
@@ -19,7 +19,7 @@ describe('seedSchedule', function () {
     });
 
     context('2 teams passed in', function () {
-        it('should return an array of 1 pair', function () {
+        it('returns an array of 1 pair', function () {
             // arrange
             var teams = [4, 1];
 
@@ -32,7 +32,7 @@ describe('seedSchedule', function () {
     });
 
     context('4 teams passed in', function () {
-        it('should arrange them appropriately', function () {
+        it('arranges them appropriately', function () {
             // arrange
             var teams = [1, 3, 8, 4];
 
@@ -45,7 +45,7 @@ describe('seedSchedule', function () {
     });
 
     context('odd number of teams passed in', function () {
-        it('should discard the lowest ranked team', function () {
+        it('discards the lowest ranked team', function () {
             // arrange
             var teams = [1, 3, 8, 9, 4];
 
@@ -58,7 +58,7 @@ describe('seedSchedule', function () {
     });
 
     context('8 teams passed in', function () {
-        it('should arrange them appropriately', function () {
+        it('arranges them appropriately', function () {
             // arrange
             var teams = [1, 2, 3, 4, 5, 6, 7, 8];
 
