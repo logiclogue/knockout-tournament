@@ -48,6 +48,12 @@ SeedScheduler
 Scheduler ~> [Team] -> [(Team, Team)]
 Scheduler.schedule
 
+//(Team -> Team -> Number -> Number -> Match) -> MatchFactory
+//MatchFactory
+
+//MatchFactory ~> Number -> Number -> (Team, Team) -> Match
+//MatchFactory.createMatch
+
 (Match -> Team) -> (Match -> Team) -> (Team -> Team -> Number -> Number ->
 Match) -> Scheduler -> [Team] -> Tournament
 Tournament
