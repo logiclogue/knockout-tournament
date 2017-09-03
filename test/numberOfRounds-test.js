@@ -1,7 +1,7 @@
 var numberOfRounds = require('../src/numberOfRounds');
 var expect = require('chai').expect;
 
-describe('#numberOfRounds()', function () {
+describe('numberOfRounds()', function () {
     context('0 teams', function () {
         it('returns 0', function () {
             var result = numberOfRounds(0);
