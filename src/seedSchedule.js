@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var pairSchedule = require('./pairSchedule');
 
 function seedSchedule(compareFunction, teams) {
     var sortedTeams = teams.sort(compareFunction);
@@ -10,9 +11,7 @@ function seedSchedule(compareFunction, teams) {
         return [];
     }
 
-    return _
-        .chunk(seededTeams, 2)
-        .filter((pair) => pair.length === 2);
+    return pairSchedule(seededTeams);
 }
 
 function seeding(numPlayers) {

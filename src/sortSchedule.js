@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var pairSchedule = require('./pairSchedule');
 
 /*
  * Schedules the teams based on the compare function.
@@ -12,16 +13,8 @@ var _ = require('lodash');
  */
 function sortSchedule(compareFunction, teams) {
     var sortedTeams = teams.sort(compareFunction);
-    var pairedTeams = pairTeams(sortedTeams);
 
-    return pairedTeams;
-}
-
-function pairTeams(sortedTeams) {
-    var pairedTeams = _.chunk(sortedTeams, 2);
-    var filteredTeams = _.filter(pairedTeams, (pair) => pair.length === 2);
-
-    return filteredTeams;
+    return pairSchedule(sortedTeams);
 }
 
 module.exports = _.curry(sortSchedule);
