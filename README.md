@@ -45,6 +45,9 @@ SortScheduler
 (Team -> Team -> Number) -> Scheduler
 SeedScheduler
 
+//String -> Scheduler
+//RandomScheduler
+
 Scheduler ~> [Team] -> [(Team, Team)]
 Scheduler.schedule
 
