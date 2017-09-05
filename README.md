@@ -45,6 +45,9 @@ SortScheduler
 (Team -> Team -> Number) -> Scheduler
 SeedScheduler
 
+Scheduler
+PairScheduler
+
 //String -> Scheduler
 //RandomScheduler
 
