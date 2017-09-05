@@ -24,6 +24,12 @@ Round.byes
 Round ~> [Team]
 Round.matches
 
+//(createMatch) -> (Match -> Team) -> (Match -> Team) -> [(Team, Team)] -> [Team] -> Round
+//createRoundFromPairs
+
+Number -> Number -> (Team, Team) -> Match
+createMatchFromPair {user supplied lambda}
+
 (Team -> Team -> Number) -> [Team] -> [(Team, Team)]
 sortSchedule
 
@@ -60,7 +66,7 @@ Scheduler.schedule
 //MatchFactory ~> Number -> Number -> (Team, Team) -> Match
 //MatchFactory.createMatch
 
-(Match -> Team) -> (Match -> Team) -> (Team -> Team -> Number -> Number ->
+(Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
 Match) -> (Number -> Scheduler) -> [Team] -> Tournament
 Tournament
 

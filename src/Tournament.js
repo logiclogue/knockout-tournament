@@ -1,4 +1,4 @@
-// (Match -> Team) -> (Match -> Team) -> (Team -> Team -> Number -> Number ->
+// (Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
 // Match) -> (Number -> Scheduler) -> [Team] -> Tournament
 function Tournament(winnerLambda, loserLambda, createMatch, getScheduler, teams) {
     this.winnerLambda = winnerLambda;
