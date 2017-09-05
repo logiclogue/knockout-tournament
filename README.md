@@ -58,7 +58,7 @@ Scheduler.schedule
 //MatchFactory.createMatch
 
 (Match -> Team) -> (Match -> Team) -> (Team -> Team -> Number -> Number ->
-Match) -> Scheduler -> [Team] -> Tournament
+Match) -> (Number -> Scheduler) -> [Team] -> Tournament
 Tournament
 
 //Tournament ~> Number -> Round
