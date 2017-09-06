@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var seedSchedule = require('../src/seedSchedule');
 var stubs = require('./stubs');
 
-describe('seedSchedule', function () {
+describe('seedSchedule()', function () {
     var compareFunction = stubs.compareFunction;
 
     context('1 team passed in', function () {
