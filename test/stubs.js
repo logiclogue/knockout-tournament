@@ -10,6 +10,17 @@ var matches = [
     new Match("Man Utd", "West Ham")
 ];
 
+var teams = [
+    "Derby",
+    "Preston",
+    "Man Utd",
+    "West Ham",
+    "Newport County",
+    "Oldham Athletic",
+    "Sheffield United",
+    "Sunderland"
+];
+
 var byedTeams = ["Newport County"];
 var getWinner = match => match.winner;
 var getLoser = match => match.loser;
@@ -32,7 +43,8 @@ var stubs = {
     getLoser: getLoser,
     Match: Match,
     compareFunction: compareFunction,
-    createMatch: createMatch
+    createMatch: createMatch,
+    teams: teams
 };
 
 module.exports = stubs;
