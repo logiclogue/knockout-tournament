@@ -27,9 +27,6 @@ Round.matches
 //(createMatch) -> (Match -> Team) -> (Match -> Team) -> [(Team, Team)] -> [Team] -> Round
 //createRoundFromPairs
 
-Number -> Number -> (Team, Team) -> Match
-createMatchFromPair {user supplied lambda}
-
 (Team -> Team -> Number) -> [Team] -> [(Team, Team)]
 sortSchedule
 
