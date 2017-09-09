@@ -5,20 +5,25 @@ var stubs = require('./stubs');
 
 describe('Tournament', function () {
     var scheduler = new RandomScheduler('');
-    var tournament = new Tournament(
-        stubs.getWinner,
-        stubs.getLoser,
-        stubs.createMatch,
-        (n) => scheduler,
-        stubs.teams
-    );
+    var tournament;
+    var calledGetScheduler;
+
+    beforeEach(function () {
+        tournament = new Tournament(
+            stubs.getWinner,
+            stubs.getLoser,
+            stubs.createMatch,
+            (n) => { calledGetScheduler = n; return scheduler; },
+            stubs.teams
+        );
+    });
 
     describe('#getRound()', function () {
         context('0th round', function () {
-            it('returns the first round', function () {
-                var result = tournament.getRound(0);
+            it('calls scheduler with 0', function () {
+                tournament.getRound(0);
 
-                expect(result).to.equal();
+                expect(calledGetScheduler).to.equal(0);
             });
         });
     });

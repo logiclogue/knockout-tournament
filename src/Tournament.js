@@ -12,7 +12,7 @@ Tournament.prototype = {
 
     // Tournament ~> Number -> Round
     getRound: function (roundNumber) {
-        
+        this.getScheduler(roundNumber);
     }
     
 }
