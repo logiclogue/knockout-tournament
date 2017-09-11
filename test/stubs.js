@@ -24,7 +24,7 @@ var teams = [
 var byedTeams = ["Newport County"];
 var getWinner = match => match.winner;
 var getLoser = match => match.loser;
-var createMatch = (homeTeam, awayTeam) => new Match(homeTeam, awayTeam);
+var createMatch = (round, n, pair) => new Match(pair[0], pair[1]);
 
 function compareFunction(teamA, teamB) {
     if (teamA > teamB) {

@@ -1,19 +1,13 @@
 var expect = require('chai').expect;
 var Tournament = require('../src/Tournament');
-var RandomScheduler = require('../src/RandomScheduler');
+var PairScheduler = require('../src/PairScheduler');
 var stubs = require('./stubs');
 
 describe('Tournament', function () {
-    var scheduler = new RandomScheduler('');
+    var scheduler = new PairScheduler();
     var tournament;
     var calledGetScheduler;
     var calledSchedulerSchedule = false;
-
-    scheduler.schedule = function (teams) {
-        calledSchedulerSchedule = true;
-
-        return [];
-    };
 
     beforeEach(function () {
         tournament = new Tournament(
@@ -31,16 +25,18 @@ describe('Tournament', function () {
 
     describe('#getRound()', function () {
         context('0th round', function () {
+            var result;
+
             beforeEach(function () {
-                tournament.getRound(0);
+                result = tournament.getRound(0);
             });
 
             it('calls get scheduler with 0', function () {
                 expect(calledGetScheduler).to.equal(0);
             });
 
-            it('calls scheduler schedule', function () {
-                expect(calledSchedulerSchedule).to.be.true;
+            it('returns round with teams', function () {
+                expect(result.teams).to.deep.equal(stubs.teams);
             });
         });
 
