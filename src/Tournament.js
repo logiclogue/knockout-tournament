@@ -14,12 +14,15 @@ Tournament.prototype = {
 
     // Tournament ~> Number -> Round
     getRound: function (roundNumber) {
-        var scheduler = this.getScheduler(roundNumber);
+        var teams = this.teams;
 
-        var pairs = scheduler.schedule();
+        if (roundNumber > 0) {
+            teams = this.getRound(roundNumber - 1).winners;
+        }
 
-        var matches = pairs
-            .map((pair, n) => this.createMatch(roundNumber, n, pair));
+        var matches = this.getScheduler(roundNumber)
+            .schedule(teams)
+            .map((pair, n) => this.createMatch(roundNumber, n, pair))
 
         var round = this.createRound(matches, []);
 
