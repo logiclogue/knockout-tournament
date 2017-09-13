@@ -62,4 +62,13 @@ describe("Round", function () {
             expect(result).to.deep.equal(expected);
         });
     });
+
+    describe('#throughTeams', function () {
+        it('returns winners and byed teams', function () {
+            var expected = ["Derby", "Man Utd", "Newport County"];
+            var result = round.throughTeams;
+
+            expect(result).to.deep.equal(expected);
+        });
+    });
 });

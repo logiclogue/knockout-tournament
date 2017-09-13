@@ -23,6 +23,10 @@ Round.prototype = {
     
     get competingTeams() {
         return this.winners.concat(this.losers);
+    },
+
+    get throughTeams() {
+        return this.winners.concat(this.byedTeams);
     }
     
 };

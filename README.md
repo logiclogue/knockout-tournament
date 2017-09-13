@@ -24,6 +24,12 @@ Round.byes
 Round ~> [Team]
 Round.matches
 
+Round ~> [Team]
+Round.competingTeams
+
+Round ~> [Team]
+Round.throughTeams
+
 //(createMatch) -> (Match -> Team) -> (Match -> Team) -> [(Team, Team)] -> [Team] -> Round
 //createRoundFromPairs
 
