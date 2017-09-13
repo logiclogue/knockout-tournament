@@ -1,4 +1,6 @@
 var Round = require('./Round');
+var numberOfByedTeams = require('./numberOfByedTeams');
+var _ = require('lodash');
 
 // (Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
 // Match) -> (Number -> Scheduler) -> [Team] -> Tournament
@@ -14,19 +16,30 @@ Tournament.prototype = {
 
     // Tournament ~> Number -> Round
     getRound: function (roundNumber) {
+        var teams = this.getTeams(roundNumber);
+        var byedTeamsCount = numberOfByedTeams(teams.length);
+
+        var byedTeams = _.take(teams, byedTeamsCount);
+        var playingTeams = _.slice(teams, byedTeamsCount);
+
+        var matches = this.getScheduler(roundNumber)
+            .schedule(playingTeams)
+            .map((pair, n) => this.createMatch(roundNumber, n, pair))
+
+        var round = this.createRound(matches, byedTeams);
+
+        return round;
+    },
+
+    // Tournament ~> Number -> [Team]
+    getTeams: function (roundNumber) {
         var teams = this.teams;
 
         if (roundNumber > 0) {
-            teams = this.getRound(roundNumber - 1).winners;
+            teams = this.getRound(roundNumber - 1).throughTeams;
         }
 
-        var matches = this.getScheduler(roundNumber)
-            .schedule(teams)
-            .map((pair, n) => this.createMatch(roundNumber, n, pair))
-
-        var round = this.createRound(matches, []);
-
-        return round;
+        return teams;
     },
 
     // Tournament ~> [Match] -> [Team] -> Round
