@@ -48,6 +48,9 @@ numberOfRounds
 Number -> Number
 numberOfPreliminaryTeams
 
+Number -> Number
+numberOfByedTeams
+
 (Team -> Team -> Number) -> Scheduler
 SortScheduler
 
