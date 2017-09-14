@@ -24,7 +24,7 @@ Tournament.prototype = {
 
         var matches = this.getScheduler(roundNumber)
             .schedule(playingTeams)
-            .map((pair, n) => this.createMatch(roundNumber, n, pair))
+            .map((pair, n) => this.createMatch(roundNumber, n, pair));
 
         var round = this.createRound(matches, byedTeams);
 
