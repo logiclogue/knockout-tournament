@@ -76,8 +76,11 @@ Scheduler.schedule
 Match) -> (Number -> Scheduler) -> [Team] -> Tournament
 Tournament
 
-//Tournament ~> Number -> Round
-//Tournament.getRound
+Tournament ~> Number -> Round
+Tournament.getRound
+
+Tournament ~> Team
+Tournament.winner
 ```
 
 ## License

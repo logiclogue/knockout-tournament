@@ -148,4 +148,40 @@ describe('Tournament', function () {
             });
         });
     });
+
+    describe('#winner', function () {
+        context('8 teams passed in', function () {
+            var result;
+
+            beforeEach(function () {
+                result = tournament.winner;
+            });
+
+            it('returns Derby', function () {
+                expect(result).to.equal("Derby");
+            });
+        });
+
+        context('3 teams', function () {
+            var tournament;
+
+            beforeEach(function () {
+                tournament = new Tournament(
+                    stubs.getWinner,
+                    stubs.getLoser,
+                    stubs.createMatch,
+                    (n) => {
+                        calledGetScheduler = n;
+
+                        return scheduler;
+                    },
+                    ["Derby", "Preston", "Man Utd"]
+                );
+            });
+
+            it('returns Preston', function () {
+                expect(tournament.winner).to.equal("Preston");
+            });
+        });
+    });
 });

@@ -50,6 +50,22 @@ Tournament.prototype = {
             matches,
             byedTeams
         );
+    },
+
+    // Tournament ~> Team
+    get winner() {
+        return this.getWinner(0);
+    },
+
+    // Tournament ~> Number -> Team
+    getWinner: function (roundNumber) {
+        var teams = this.getTeams(roundNumber);
+
+        if (teams.length === 1) {
+            return teams[0];
+        }
+
+        return this.getWinner(roundNumber + 1);
     }
     
 }
