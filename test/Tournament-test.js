@@ -184,4 +184,46 @@ describe('Tournament', function () {
             });
         });
     });
+
+    describe('#rounds', function () {
+        context('8 teams', function () {
+            it('returns 3 rounds', function () {
+                expect(tournament.rounds.length).to.equal(3);
+            });
+
+            it('returns the correct first round', function () {
+                expect(tournament.rounds[0].teams.length).to.equal(8);
+            });
+
+            it('returns the correct second round', function () {
+                expect(tournament.rounds[1].teams.length).to.equal(4);
+            });
+
+            it('returns the correct final round', function () {
+                expect(tournament.rounds[2].teams.length).to.equal(2);
+            });
+        });
+
+        context('4 teams', function () {
+            var tournament;
+
+            beforeEach(function () {
+                tournament = new Tournament(
+                    stubs.getWinner,
+                    stubs.getLoser,
+                    stubs.createMatch,
+                    (n) => {
+                        calledGetScheduler = n;
+
+                        return scheduler;
+                    },
+                    stubs.teams.slice(0, 3)
+                );
+            });
+
+            it('returns 2 rounds', function () {
+                expect(tournament.rounds.length).to.equal(2);
+            });
+        });
+    });
 });

@@ -66,6 +66,24 @@ Tournament.prototype = {
         }
 
         return this.getWinner(roundNumber + 1);
+    },
+
+    // Tournament ~> [Round]
+    get rounds() {
+        return this.getRounds([], 0);
+    },
+
+    // Tournament ~> [Round] -> Number -> [Round]
+    getRounds: function (rounds, roundNumber) {
+        var round = this.getRound(roundNumber);
+
+        if (round.teams < 2) {
+            return rounds;
+        }
+        
+        var newRounds = _.concat(rounds, round);
+
+        return this.getRounds(newRounds, roundNumber + 1);
     }
     
 }
