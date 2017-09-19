@@ -85,8 +85,8 @@ Tournament.winner
 Tournament ~> Number -> Team
 Tournament.getWinner
 
-//Tournament ~> [Round]
-//Tournament.rounds
+Tournament ~> [Round]
+Tournament.rounds
 
 //(Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
 Match) -> Team -> TournamentFactory
