@@ -60,8 +60,8 @@ SeedScheduler
 Scheduler
 PairScheduler
 
-//String -> Scheduler
-//RandomScheduler
+String -> Scheduler
+RandomScheduler
 
 Scheduler ~> [Team] -> [(Team, Team)]
 Scheduler.schedule
