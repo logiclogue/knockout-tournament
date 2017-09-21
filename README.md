@@ -66,12 +66,6 @@ RandomScheduler
 Scheduler ~> [Team] -> [(Team, Team)]
 Scheduler.schedule
 
-//(Team -> Team -> Number -> Number -> Match) -> MatchFactory
-//MatchFactory
-
-//MatchFactory ~> Number -> Number -> (Team, Team) -> Match
-//MatchFactory.createMatch
-
 (Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
 Match) -> (Number -> Scheduler) -> [Team] -> Tournament
 Tournament
