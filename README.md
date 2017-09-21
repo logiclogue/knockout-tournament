@@ -30,7 +30,8 @@ Round.competingTeams
 Round ~> [Team]
 Round.throughTeams
 
-//(createMatch) -> (Match -> Team) -> (Match -> Team) -> [(Team, Team)] -> [Team] -> Round
+//(createMatch) -> (Match -> Team) -> (Match -> Team) -> [(Team, Team)] ->
+//[Team] -> Round
 //createRoundFromPairs
 
 (Team -> Team -> Number) -> [Team] -> [(Team, Team)]
