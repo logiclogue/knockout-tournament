@@ -83,9 +83,12 @@ Tournament.getWinner
 Tournament ~> [Round]
 Tournament.rounds
 
-//(Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
-Match) -> Team -> TournamentFactory
-//TournamentFactory
+(Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
+Match) -> TournamentFactory
+TournamentFactory
+
+[Team] -> Tournament
+TournamentFactory.createRandomTournament
 ```
 
 ## License
