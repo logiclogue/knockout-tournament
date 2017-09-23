@@ -1,13 +1,13 @@
 var expect = require('chai').expect;
 var stubs = require('./stubs');
-var TournamentFactory = require('../src/TournamentFactory');
+var TournamentFacade = require('../src/TournamentFacade');
 var RandomScheduler = require('../src/RandomScheduler');
 
-describe('TournamentFactory', function () {
+describe('TournamentFacade', function () {
     var factory;
 
     before(function () {
-        factory = new TournamentFactory(
+        factory = new TournamentFacade(
             stubs.getWinner,
             stubs.getLoser,
             stubs.createMatch

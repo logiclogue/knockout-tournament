@@ -1,13 +1,13 @@
 var RandomScheduler = require('../src/RandomScheduler');
 var Tournament = require('../src/Tournament');
 
-function TournamentFactory(getWinner, getLoser, createMatch) {
+function TournamentFacade(getWinner, getLoser, createMatch) {
     this.getWinner = getWinner;
     this.getLoser = getLoser;
     this.createMatch = createMatch;
 }
 
-TournamentFactory.prototype = {
+TournamentFacade.prototype = {
 
     createRandomTournament: function (teams, seed) {
         var scheduler = new RandomScheduler(seed);
@@ -25,4 +25,4 @@ TournamentFactory.prototype = {
     
 };
 
-module.exports = TournamentFactory;
+module.exports = TournamentFacade;
