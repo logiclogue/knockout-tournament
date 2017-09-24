@@ -1,6 +1,8 @@
 var RandomScheduler = require('../src/RandomScheduler');
 var Tournament = require('../src/Tournament');
 
+// (Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
+// Match) -> TournamentFacade
 function TournamentFacade(getWinner, getLoser, createMatch) {
     this.getWinner = getWinner;
     this.getLoser = getLoser;
@@ -9,6 +11,7 @@ function TournamentFacade(getWinner, getLoser, createMatch) {
 
 TournamentFacade.prototype = {
 
+    // TournamentFacade ~> [Team] -> String -> Tournament
     createRandomTournament: function (teams, seed) {
         var scheduler = new RandomScheduler(seed);
 

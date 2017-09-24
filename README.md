@@ -84,11 +84,11 @@ Tournament ~> [Round]
 Tournament.rounds
 
 (Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
-Match) -> TournamentFactory
-TournamentFactory
+Match) -> TournamentFacade
+TournamentFacade
 
-[Team] -> Tournament
-TournamentFactory.createRandomTournament
+TournamentFacade ~> [Team] -> String -> Tournament
+TournamentFacade.createRandomTournament
 ```
 
 ## License
