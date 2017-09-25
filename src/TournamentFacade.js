@@ -24,7 +24,9 @@ TournamentFacade.prototype = {
         );
 
         return tournament;
-    }
+    },
+
+    Tournament: Tournament
     
 };
 

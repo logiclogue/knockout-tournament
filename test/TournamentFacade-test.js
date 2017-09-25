@@ -2,12 +2,13 @@ var expect = require('chai').expect;
 var stubs = require('./stubs');
 var TournamentFacade = require('../src/TournamentFacade');
 var RandomScheduler = require('../src/RandomScheduler');
+var Tournament = require('../src/Tournament');
 
 describe('TournamentFacade', function () {
-    var factory;
+    var facade;
 
     before(function () {
-        factory = new TournamentFacade(
+        facade = new TournamentFacade(
             stubs.getWinner,
             stubs.getLoser,
             stubs.createMatch
@@ -16,7 +17,7 @@ describe('TournamentFacade', function () {
 
     describe('#createRandomTournament()', function () {
         it('creates a tournament with the random scheduler', function () {
-            var result = factory.createRandomTournament(stubs.teams, 'seed');
+            var result = facade.createRandomTournament(stubs.teams, 'seed');
 
             expect(result.getScheduler(0)).to.be.instanceof(RandomScheduler);
         });
@@ -24,9 +25,15 @@ describe('TournamentFacade', function () {
         it('creates a tournament with the given seed', function () {
             var seed = 'seed';
 
-            var result = factory.createRandomTournament(stubs.teams, seed);
+            var result = facade.createRandomTournament(stubs.teams, seed);
 
             expect(result.getScheduler(0).seed).to.equal(seed);
+        });
+    });
+
+    describe('#Tournament', function () {
+        it('is Tournament', function () {
+            expect(facade.Tournament).to.equal(Tournament);
         });
     });
 });
