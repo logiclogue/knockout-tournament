@@ -1,5 +1,10 @@
 var RandomScheduler = require('../src/RandomScheduler');
 var Tournament = require('../src/Tournament');
+var Round = require('../src/Round');
+var SortScheduler = require('../src/SortScheduler');
+var SeedScheduler = require('../src/SeedScheduler');
+var PairScheduler = require('../src/PairScheduler');
+var RandomScheduler = require('../src/RandomScheduler');
 
 // (Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
 // Match) -> TournamentFacade
@@ -26,7 +31,12 @@ TournamentFacade.prototype = {
         return tournament;
     },
 
-    Tournament: Tournament
+    Tournament: Tournament,
+    Round: Round,
+    SortScheduler: SortScheduler,
+    SeedScheduler: SeedScheduler,
+    PairScheduler: PairScheduler,
+    RandomScheduler: RandomScheduler
     
 };
 
