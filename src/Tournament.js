@@ -1,91 +1,89 @@
-var Round = require('./Round');
-var numberOfByedTeams = require('./numberOfByedTeams');
-var _ = require('lodash');
+const Round = require("./Round");
+const numberOfByedTeams = require("./numberOfByedTeams");
+const _ = require("lodash");
 
-// (Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
-// Match) -> (Number -> Scheduler) -> [Team] -> Tournament
-function Tournament(winnerLambda, loserLambda, createMatch, getScheduler, teams) {
-    this.winnerLambda = winnerLambda;
-    this.loserLambda = loserLambda;
-    this.createMatch = createMatch;
-    this.getScheduler = getScheduler;
-    this.teams = teams;
-}
-
-Tournament.prototype = {
+class Tournament {
+    // (Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
+    // Match) -> (Number -> Scheduler) -> [Team] -> Tournament
+    constructor(winnerLambda, loserLambda, createMatch, getScheduler, teams) {
+        this.winnerLambda = winnerLambda;
+        this.loserLambda = loserLambda;
+        this.createMatch = createMatch;
+        this.getScheduler = getScheduler;
+        this.teams = teams;
+    }
 
     // Tournament ~> Number -> Round
-    getRound: function (roundNumber) {
-        var teams = this.getTeams(roundNumber);
-        var byedTeamsCount = numberOfByedTeams(teams.length);
+    getRound(roundNumber) {
+        const teams = this.getTeams(roundNumber);
+        const byedTeamsCount = numberOfByedTeams(teams.length);
 
-        var byedTeams = _.take(teams, byedTeamsCount);
-        var playingTeams = _.slice(teams, byedTeamsCount);
+        const byedTeams = _.take(teams, byedTeamsCount);
+        const playingTeams = _.slice(teams, byedTeamsCount);
 
-        var matches = this.getScheduler(roundNumber)
+        const matches = this.getScheduler(roundNumber)
             .schedule(playingTeams)
             .map((pair, n) => this.createMatch(roundNumber, n, pair));
 
-        var round = this.createRound(matches, byedTeams);
+        const round = this.createRound(matches, byedTeams);
 
         return round;
-    },
+    }
 
     // Tournament ~> Number -> [Team]
-    getTeams: function (roundNumber) {
-        var teams = this.teams;
+    getTeams(roundNumber) {
+        let teams = this.teams;
 
         if (roundNumber > 0) {
             teams = this.getRound(roundNumber - 1).throughTeams;
         }
 
         return teams;
-    },
+    }
 
     // Tournament ~> [Match] -> [Team] -> Round
-    createRound: function (matches, byedTeams) {
+    createRound(matches, byedTeams) {
         return new Round(
             this.winnerLambda,
             this.loserLambda,
             matches,
             byedTeams
         );
-    },
+    }
 
     // Tournament ~> Team
     get winner() {
         return this.getWinner(0);
-    },
+    }
 
     // Tournament ~> Number -> Team
-    getWinner: function (roundNumber) {
-        var teams = this.getTeams(roundNumber);
+    getWinner(roundNumber) {
+        const teams = this.getTeams(roundNumber);
 
         if (teams.length === 1) {
             return teams[0];
         }
 
         return this.getWinner(roundNumber + 1);
-    },
+    }
 
     // Tournament ~> [Round]
     get rounds() {
         return this.getRounds([], 0);
-    },
+    }
 
     // Tournament ~> [Round] -> Number -> [Round]
-    getRounds: function (rounds, roundNumber) {
-        var round = this.getRound(roundNumber);
+    getRounds(rounds, roundNumber) {
+        const round = this.getRound(roundNumber);
 
         if (round.teams < 2) {
             return rounds;
         }
         
-        var newRounds = _.concat(rounds, round);
+        const newRounds = _.concat(rounds, round);
 
         return this.getRounds(newRounds, roundNumber + 1);
     }
-    
 }
 
 module.exports = Tournament;

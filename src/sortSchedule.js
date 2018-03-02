@@ -1,5 +1,5 @@
-var _ = require('lodash');
-var pairSchedule = require('./pairSchedule');
+const _ = require("lodash");
+const pairSchedule = require("./pairSchedule");
 
 /*
  * Schedules the teams based on the compare function.
@@ -12,7 +12,7 @@ var pairSchedule = require('./pairSchedule');
  * @return {Array} Array of paired teams
  */
 function sortSchedule(compareFunction, teams) {
-    var sortedTeams = teams.sort(compareFunction);
+    const sortedTeams = teams.sort(compareFunction);
 
     return pairSchedule(sortedTeams);
 }

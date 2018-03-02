@@ -1,26 +1,31 @@
-var RandomScheduler = require('../src/RandomScheduler');
-var Tournament = require('../src/Tournament');
-var Round = require('../src/Round');
-var SortScheduler = require('../src/SortScheduler');
-var SeedScheduler = require('../src/SeedScheduler');
-var PairScheduler = require('../src/PairScheduler');
-var RandomScheduler = require('../src/RandomScheduler');
+const RandomScheduler = require("../src/RandomScheduler");
+const Tournament = require("../src/Tournament");
+const Round = require("../src/Round");
+const SortScheduler = require("../src/SortScheduler");
+const SeedScheduler = require("../src/SeedScheduler");
+const PairScheduler = require("../src/PairScheduler");
 
-// (Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
-// Match) -> TournamentFacade
-function TournamentFacade(getWinner, getLoser, createMatch) {
-    this.getWinner = getWinner;
-    this.getLoser = getLoser;
-    this.createMatch = createMatch;
-}
+class TournamentFacade {
+    // (Match -> Team) -> (Match -> Team) -> (Number -> Number -> (Team, Team) ->
+    // Match) -> TournamentFacade
+    constructor(getWinner, getLoser, createMatch) {
+        this.getWinner = getWinner;
+        this.getLoser = getLoser;
+        this.createMatch = createMatch;
 
-TournamentFacade.prototype = {
+        this.Tournament = Tournament;
+        this.Round = Round;
+        this.SortScheduler = SortScheduler;
+        this.SeedScheduler = SeedScheduler;
+        this.PairScheduler = PairScheduler;
+        this.RandomScheduler = RandomScheduler;
+    }
 
     // TournamentFacade ~> [Team] -> String -> Tournament
-    createRandomTournament: function (teams, seed) {
-        var scheduler = new RandomScheduler(seed);
+    createRandomTournament(teams, seed) {
+        const scheduler = new RandomScheduler(seed);
 
-        var tournament = new Tournament(
+        const tournament = new Tournament(
             this.getWinner,
             this.getLoser,
             this.createMatch,
@@ -29,15 +34,7 @@ TournamentFacade.prototype = {
         );
 
         return tournament;
-    },
-
-    Tournament: Tournament,
-    Round: Round,
-    SortScheduler: SortScheduler,
-    SeedScheduler: SeedScheduler,
-    PairScheduler: PairScheduler,
-    RandomScheduler: RandomScheduler
-    
-};
+    }
+}
 
 module.exports = TournamentFacade;

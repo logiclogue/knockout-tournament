@@ -1,17 +1,15 @@
-var seedSchedule = require('./seedSchedule');
+const seedSchedule = require("./seedSchedule");
 
-// (Team -> Team -> Number) -> Scheduler
-function SeedScheduler(compareFunction) {
-    this.compareFunction = compareFunction;
-}
-
-SeedScheduler.prototype = {
+class SeedScheduler {
+    // (Team -> Team -> Number) -> Scheduler
+    constructor(compareFunction) {
+        this.compareFunction = compareFunction;
+    }
 
     // SeedScheduler ~> [Team] -> [(Team, Team)]
-    schedule: function (teams) {
+    schedule(teams) {
         return seedSchedule(this.compareFunction, teams);
     }
-    
-};
+}
 
 module.exports = SeedScheduler;

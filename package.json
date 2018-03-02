@@ -1,6 +1,6 @@
 {
   "name": "knockout-tournament",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A framework for contructing knockout tournaments for games",
   "main": "index.js",
   "scripts": {

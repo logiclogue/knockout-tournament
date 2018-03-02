@@ -1,20 +1,13 @@
-var pairScheduler = require('./pairSchedule');
-var _ = require('lodash');
+const pairScheduler = require("./pairSchedule");
+const _ = require("lodash");
 
-// Scheduler
-function PairScheduler() {
-    
-}
-
-PairScheduler.prototype = {
-
+class PairScheduler {
     // PairScheduler ~> [Team] -> [(Team, Team)]
-    schedule: function (teams) {
+    schedule(teams) {
         return _
             .chunk(teams, 2)
             .filter((pair) => pair.length === 2);
     }
-    
 }
 
 module.exports = PairScheduler;

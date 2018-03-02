@@ -1,26 +1,26 @@
-var pair = require('./pairSchedule');
-var hash = require('object-hash');
+const pair = require("./pairSchedule");
+const hash = require("object-hash");
 
-// String -> Scheduler
-function RandomScheduler(seed) {
-    this.seed = seed || '';
-}
-
-RandomScheduler.prototype = {
+class RandomScheduler {
+    // String -> Scheduler
+    constructor(seed) {
+        this.seed = seed || "";
+    }
 
     // RandomScheduler ~> [Team] -> [(Team, Team)]
-    schedule: function (teams) {
-        var signature = hash(teams.sort(this.getCompareFunction('first run')));
-        var randomisedTeams = teams.sort(this.getCompareFunction(signature));
+    schedule(teams) {
+        const compareFunction = this.getCompareFunction("first run");
+        const signature = hash(teams.sort(compareFunction));
+        const randomisedTeams = teams.sort(this.getCompareFunction(signature));
 
         return pair(randomisedTeams);
-    },
+    }
 
     // RandomScheduler ~> String -> (a -> a -> Number)
-    getCompareFunction: function (seed) {
+    getCompareFunction(seed) {
         return (a, b) => {
-            var hashA = this.hash(seed, a);
-            var hashB = this.hash(seed, b);
+            const hashA = this.hash(seed, a);
+            const hashB = this.hash(seed, b);
 
             if (hashA > hashB) {
                 return 1;
@@ -30,13 +30,12 @@ RandomScheduler.prototype = {
 
             return 0;
         };
-    },
-    
-    // RandomScheduler ~> String -> a -> String
-    hash: function (seed, a) {
-        return hash(hash(a) + ',' + seed + ',' + this.seed);
     }
     
-};
+    // RandomScheduler ~> String -> a -> String
+    hash(seed, a) {
+        return hash(hash(a) + "," + seed + "," + this.seed);
+    }
+}
 
 module.exports = RandomScheduler;

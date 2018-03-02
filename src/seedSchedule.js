@@ -1,11 +1,11 @@
-var _ = require('lodash');
-var pairSchedule = require('./pairSchedule');
+const _ = require("lodash");
+const pairSchedule = require("./pairSchedule");
 
 function seedSchedule(compareFunction, teams) {
-    var sortedTeams = teams.sort(compareFunction);
-    var seedings = seeding(sortedTeams.length);
+    const sortedTeams = teams.sort(compareFunction);
+    const seedings = seeding(sortedTeams.length);
 
-    var seededTeams = seedings.map((seed) => sortedTeams[seed - 1]);
+    const seededTeams = seedings.map((seed) => sortedTeams[seed - 1]);
 
     if (teams.length <= 1) {
         return [];
@@ -15,9 +15,9 @@ function seedSchedule(compareFunction, teams) {
 }
 
 function seeding(numPlayers) {
-    var rounds = Math.floor(Math.log(numPlayers) / Math.log(2) - 1);
-    var teams = [1, 2];
-    var i;
+    const rounds = Math.floor(Math.log(numPlayers) / Math.log(2) - 1);
+    let teams = [1, 2];
+    let i;
 
     for (i = 0; i < rounds; i += 1) {
         teams = nextLayer(teams);
@@ -27,8 +27,8 @@ function seeding(numPlayers) {
 }
 
 function nextLayer(teams) {
-    var out = [];
-    var length = (teams.length * 2) + 1;
+    let out = [];
+    const length = (teams.length * 2) + 1;
 
     teams.forEach((d) => {
         out.push(d);

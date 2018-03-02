@@ -1,17 +1,15 @@
-var sortSchedule = require('./sortSchedule');
+const sortSchedule = require("./sortSchedule");
 
-// (Team -> Team -> Number) -> Scheduler
-function SortScheduler(compareFunction) {
-    this.compareFunction = compareFunction;
-}
-
-SortScheduler.prototype = {
+class SortScheduler {
+    // (Team -> Team -> Number) -> Scheduler
+    constructor(compareFunction) {
+        this.compareFunction = compareFunction;
+    }
 
     // SortScheduler ~> [Team] -> [(Team, Team)]
-    schedule: function (teams) {
+    schedule(teams) {
         return sortSchedule(this.compareFunction, teams);
     }
-    
-};
+}
 
 module.exports = SortScheduler;
